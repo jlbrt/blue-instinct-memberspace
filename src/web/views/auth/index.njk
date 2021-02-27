@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>Blue Instinct Memberspace</title>
+
+    <link rel="stylesheet" href="/assets/css/main.css" />
+    <link rel="stylesheet" href="/assets/css/auth.css" />
+  </head>
+  <body>
+    <div class="auth-wrapper">
+      <div class="onboarding">
+        <img
+          alt="Blue Instinct Logo"
+          src="/assets/img/blue-instinct-logo.svg"
+        />
+        <h1>
+          Werde ein Teil der<br />
+          Blue Instinct Community
+        </h1>
+        <p>
+          Die Registrierung im Blue Instinct Memberspace ist der erste Schritt,
+          um Teil der Community zu werden. Von hier kannst du auf
+          Mitspielersuche, Events und vieles mehr zugreifen.
+        </p>
+      </div>
+      <div class="requirements">
+        <div class="requirements__requirement">
+          <input type="checkbox" id="ageRequirement" required />
+          <label for="ageRequirement">Ich bin 18+ Jahre alt</label>
+        </div>
+        <div class="requirements__requirement">
+          <input type="checkbox" id="tosRequirement" required />
+          <label for="tosRequirement"
+            >Ich habe die <a href="#">Nutzungsbedingungen</a> gelesen und
+            akzeptiert</label
+          >
+        </div>
+      </div>
+      <div class="actions">
+        <button id="registrationButton">
+          <img src="/assets/icon/steam.svg" alt="Steam Logo" />
+          <p>
+            Registrierung mit<br />
+            Steam Account beginnen
+          </p>
+        </button>
+        <p id="toLogin">
+          Bereits Mitglied? <a href="/auth/steam">Zum Login</a>
+        </p>
+        <p id="valveLegal">
+          Diese Seite steht in keinem Zusammenhang mit Valve Corp.
+        </p>
+      </div>
+    </div>
+    <script>
+      {
+        {
+          const registrationButton = document.querySelector(
+            '#registrationButton'
+          );
+
+          const ageRequirementInput = document.querySelector(
+            'input#ageRequirement'
+          );
+          const tosRequirementInput = document.querySelector(
+            'input#tosRequirement'
+          );
+
+          registrationButton.addEventListener('click', () => {
+            if (!ageRequirementInput.checkValidity()) {
+              ageRequirementInput.reportValidity();
+              return;
+            }
+
+            if (!tosRequirementInput.checkValidity()) {
+              tosRequirementInput.reportValidity();
+              return;
+            }
+
+            window.location.href = '/auth/steam';
+          });
+        }
+      }
+    </script>
+  </body>
+</html>

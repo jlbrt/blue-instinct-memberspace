@@ -1,0 +1,153 @@
+body {
+  background-color: #202738;
+  margin: 0;
+  padding: 0;
+}
+
+.auth-wrapper {
+  padding: 60px 80px 30px 80px;
+  background-color: #191e2c;
+  border-radius: 8px;
+  margin: 120px auto 60px auto;
+  max-width: 500px;
+  box-shadow: 0px 3px 16px 0px rgba(0, 0, 0, 0.4);
+}
+
+.auth-wrapper > .onboarding {
+  margin-bottom: 65px;
+}
+
+.auth-wrapper > .onboarding > img {
+  height: 110px;
+}
+
+.auth-wrapper > .onboarding > h1 {
+  font-weight: 500;
+  font-size: 30px;
+  color: #fff;
+}
+
+.auth-wrapper > .onboarding > p {
+  font-size: 15px;
+  color: #999;
+  line-height: 22px;
+}
+
+.auth-wrapper > .requirements {
+  margin-bottom: 50px;
+}
+
+.auth-wrapper > .requirements > .requirements__requirement {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-weight: 400;
+  font-size: 15px;
+  color: #fff;
+  margin-bottom: 16px;
+}
+
+.auth-wrapper
+  > .requirements
+  > .requirements__requirement
+  > input[type='checkbox'] {
+  appearance: none;
+  height: 22px;
+  width: 22px;
+  background-color: #202738;
+  border-radius: 6px;
+  margin-right: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+  transition: 0.1s background-color ease;
+}
+
+.auth-wrapper
+  > .requirements
+  > .requirements__requirement
+  > input[type='checkbox']::after {
+  content: '';
+  background-image: url('/assets/icon/check.svg');
+  background-size: 20px 20px;
+  height: 20px;
+  width: 20px;
+  display: none;
+}
+
+.auth-wrapper
+  > .requirements
+  > .requirements__requirement
+  > input[type='checkbox']:checked {
+  background-color: #5268f4;
+}
+
+.auth-wrapper
+  > .requirements
+  > .requirements__requirement
+  > input[type='checkbox']:checked::after {
+  display: inline-flex;
+}
+
+.auth-wrapper > .requirements > .requirements__requirement a {
+  color: #5268f4;
+  text-decoration: none;
+}
+
+.auth-wrapper > .requirements > .requirements__requirement a:hover {
+  text-decoration: underline;
+}
+
+.auth-wrapper > .actions {
+  text-align: center;
+}
+
+.auth-wrapper > .actions > button {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  padding: 10px 30px;
+  background-color: #5268f4;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.14);
+  cursor: pointer;
+}
+
+.auth-wrapper > .actions > button > img {
+  height: 40px;
+  margin-right: 20px;
+}
+
+.auth-wrapper > .actions > button > p {
+  margin: 0;
+  font-weight: 500;
+  font-size: 14px;
+  color: #fff;
+  text-align: left;
+}
+
+.auth-wrapper > .actions > p#toLogin {
+  color: #fff;
+  font-size: 15px;
+  margin-bottom: 40px;
+}
+
+.auth-wrapper > .actions > p#toLogin > a {
+  color: #5268f4;
+  text-decoration: none;
+}
+
+.auth-wrapper > .actions > p#toLogin > a:hover {
+  text-decoration: underline;
+}
+
+.auth-wrapper > .actions > p#valveLegal {
+  color: #999;
+  font-size: 14px;
+}

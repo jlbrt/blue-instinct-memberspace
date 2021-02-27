@@ -1,0 +1,7 @@
+{
+  "exec": "node --inspect=0.0.0.0:9229 -r ts-node/register ./src/index.ts",
+  "ignore": ["test/*", "doc/*", "seed/*"],
+  "ext": "ts njk",
+  "inspect": true,
+  "signal": "SIGINT"
+}

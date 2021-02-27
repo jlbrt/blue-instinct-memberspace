@@ -1,5 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import fetch from 'node-fetch';
+import nanoid from 'nanoid/async';
 import { dbConnection } from '../../db';
 import * as authValidator from '../validators/authValidator';
 
@@ -21,6 +22,10 @@ export const handleSteamAuth = (
   next: NextFunction
 ) => {
   try {
+    if (req.signedCookies.sessionId) {
+      return res.redirect('/app');
+    }
+
     const params = {
       'openid.ns': 'http://specs.openid.net/auth/2.0',
       'openid.mode': 'checkid_setup',
@@ -101,14 +106,37 @@ export const handleSteamAuthCallback = async (
       .first();
 
     if (!user) {
-      // TODO create user
+      [user] = await dbConnection('users').insert(
+        {
+          steamId64,
+        },
+        ['id']
+      );
     }
 
-    // TODO start session for user
+    const sessionId = await nanoid.customAlphabet(
+      'abcdefghijklmnopqrstuvwxyz1234567890',
+      64
+    )();
+    const [session] = await dbConnection('sessions').insert(
+      {
+        sessionId,
+        userId: user.id,
+      },
+      ['id', 'sessionId', 'userId', 'createdAt']
+    );
 
-    // TODO redirect to app
+    res.cookie('sessionId', session.sessionId.toString(), {
+      httpOnly: true,
+      sameSite: true,
+      secure: true,
+      expires: new Date(
+        session.createdAt.getTime() + 2 * 7 * 24 * 60 * 60 * 1000 // 2 weeks from session creation
+      ),
+      signed: true,
+    });
 
-    return res.send('STEAM AUTH');
+    res.redirect('/app');
   } catch (err) {
     return next(err);
   }

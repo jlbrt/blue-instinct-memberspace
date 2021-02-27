@@ -5,6 +5,8 @@ const router = Router();
 
 router.get('/', authController.handleGetLogin);
 
+router.get('/logout', authController.handleGetLogout);
+
 router.get('/auth/steam', authController.handleSteamAuth);
 
 router.get('/auth/steam/callback', authController.handleSteamAuthCallback);

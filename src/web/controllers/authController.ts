@@ -16,6 +16,20 @@ export const handleGetLogin = (
   }
 };
 
+export const handleGetLogout = (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    res.clearCookie('sessionId');
+
+    return res.redirect('/');
+  } catch (err) {
+    return next(err);
+  }
+};
+
 export const handleSteamAuth = (
   req: Request,
   res: Response,
@@ -97,8 +111,6 @@ export const handleSteamAuthCallback = async (
       ),
       10
     ).toString();
-
-    console.log('Success! SteamId', steamId64);
 
     let user = await dbConnection('users')
       .select(['id'])
